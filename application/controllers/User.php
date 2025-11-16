@@ -24,7 +24,7 @@ class User extends CI_Controller
         } else {
             $email = $this->input->post('mail_id');
             $password = $this->input->post('pass_wd');
-            $user = $this->Admin_model->read_user($email);
+            $user = $this->User_model->read_user($email);
 
             if (password_verify($password, $user->pass_wd)) {
                 $session_data = [
