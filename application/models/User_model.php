@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin_model extends CI_Model {
+class User_model extends CI_Model {
     public function get_user($user_id = '') {
         if ($user_id == '') {
             return $this->db->get('users')->result();

@@ -1,15 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller
+class User extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Admin_model');
-        $this->load->library(['form_validation', 'session']);
-        $this->load->helper(['url', 'form']);
-        $this->load->library('session');
+        $this->load->model('User_model');
+        
     }
 
     public function index()
@@ -19,7 +17,7 @@ class Login extends CI_Controller
         }
 
         $this->load->view('incld/header');
-        $this->load->view('admin/login');
+        $this->load->view('user/login');
         $this->load->view('incld/footer');
     }
 
