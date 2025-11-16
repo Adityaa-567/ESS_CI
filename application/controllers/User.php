@@ -53,8 +53,8 @@ class User extends CI_Controller
         redirect('user');
     }
     public function list() {
-		$data['users'] = $this->Admin_model->get_user();
-        $data['user_count'] = $this->Admin_model->get_user_count();
+		$data['users'] = $this->User_model->get_user();
+        $data['user_count'] = $this->User_model->get_user_count();
         $this->load->view('incld/verify');
         $this->load->view('incld/header');
 		$this->load->view('incld/top_menu');
@@ -82,18 +82,17 @@ class User extends CI_Controller
 	public function edit($user_id) {
         $data = new stdClass();
         $data->action = 'edit';
-        $data->user   = $this->Admin_model->get_user($user_id);
-        // $data->user->pass_wd = 
-        	$this->load->view('incld/verify');
+        $data->user   = $this->User_model->get_user($user_id);
+        $this->load->view('incld/verify');
         $this->load->view("incld/header");
-        $this->load->view("admin/form",$data);
+        $this->load->view("user/form",$data);
         $this->load->view("incld/jslib");
         $this->load->view("incld/script");
         $this->load->view("incld/footer");
     } 
     public function view($user_id) {
         $data['action'] = 'view';
-        $data['user'] = $this->Admin_model->get_user($user_id);
+        $data['user'] = $this->User_model->get_user($user_id);
         	$this->load->view('incld/verify');
         $this->load->view("incld/header");
         $this->load->view("admin/form",$data);
@@ -103,7 +102,7 @@ class User extends CI_Controller
     } 
     public function delete($user_id) {
         $data['action'] = 'delete';
-        $data['user'] = $this->Admin_model->get_user($user_id);
+        $data['user'] = $this->User_model->get_user($user_id);
         	$this->load->view('incld/verify');
         $this->load->view("incld/header");
         $this->load->view("admin/form",$data);
@@ -139,10 +138,10 @@ class User extends CI_Controller
         ];
 
         if ($user_id) {
-            $this->Admin_model->update_user($user_id, $data);
+            $this->User_model->update_user($user_id, $data);
             $this->session->set_flashdata('success', 'User updated successfully!');
         } else {
-            $this->Admin_model->add_user($data);
+            $this->User_model->add_user($data);
         }
 
         redirect('admin/user_list');
