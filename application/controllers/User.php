@@ -66,7 +66,7 @@ class User extends CI_Controller
 		$this->load->view('incld/script');
 
 	}
-    	public function add(){
+    public function add(){
 		$data['action'] = 'Add' or 'Edit';
         $this->load->view('incld/verify');
 		$this->load->view('incld/header');
