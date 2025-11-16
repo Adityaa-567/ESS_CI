@@ -27,8 +27,8 @@ class Admin extends CI_Controller {
 	}
 	
     public function dashboard() {
-        $data['users'] = $this->Admin_model->get_user();
-        $data['user_count'] = $this->Admin_model->get_user_count();
+        $data['users'] = $this->User_model->get_user();
+        $data['user_count'] = $this->User_model->get_user_count();
         $this->load->view('incld/verify');
         $this->load->view('incld/header');
         $this->load->view('incld/top_menu');
