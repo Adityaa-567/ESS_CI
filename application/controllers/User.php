@@ -61,7 +61,7 @@ class User extends CI_Controller
         $this->load->view('incld/header');
 		$this->load->view('incld/top_menu');
 		$this->load->view('incld/side_menu');
-		$this->load->view('admin/dashboard');
+	//	$this->load->view('admin/dashboard');
 		$this->load->view('user/list',$data);
 		$this->load->view('incld/jslib');
 		$this->load->view('incld/footer');
