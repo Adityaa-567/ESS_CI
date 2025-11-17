@@ -8,7 +8,7 @@ class Staff extends CI_Controller {
         $this->load->model('Staff_model');
        
     }
-    public function Staff_dash() {
+    public function staff_dash() {
         $data['staffs'] = $this->Staff_model->get_user();
 
         $this->load->view('incld/verify');
