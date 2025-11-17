@@ -1,5 +1,5 @@
 <table class="table table-bordered table-striped">
-      <a href="<?= base_url('Role/add'); ?>" class="btn btn-primary float-right">Add Staff</a>
+      <a href="<?= base_url('Role/add'); ?>" class="btn btn-primary float-right">Add User Role</a>
        <!-- Flash Messages -->
             <?php include('assets/incld/messages.php') ?>
 
