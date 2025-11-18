@@ -8,7 +8,11 @@ class Staff extends CI_Controller {
         $this->load->model('Staff_model');
        
     }
+<<<<<<< HEAD
     public function list() {
+=======
+    public function staff_dash() {
+>>>>>>> 9307beb52c08a65998ae485eb31f5f7b74a1a073
         $data['staffs'] = $this->Staff_model->get_user();
 
         $this->load->view('incld/verify');
@@ -16,7 +20,11 @@ class Staff extends CI_Controller {
         $this->load->view('incld/top_menu');
         $this->load->view('incld/side_menu');
         $this->load->view('user/dashboard');
+<<<<<<< HEAD
         $this->load->view('staff/list', $data);
+=======
+        $this->load->view('staff/staff_list',  $data);
+>>>>>>> 9307beb52c08a65998ae485eb31f5f7b74a1a073
         $this->load->view('incld/jslib');
         $this->load->view('incld/footer');
         $this->load->view('incld/script');
@@ -138,3 +146,4 @@ class Staff extends CI_Controller {
     }
 
 }
+?>
