@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('User_model');
-        $this->load->model('dashboard_model');
+        $this->load->model('Dashboard_model');
 
         
         if (!$this->session->userdata('logged_in')) {
@@ -15,9 +15,9 @@ class Admin extends CI_Controller {
     }
 
 	public function index() {
-         $this->load->model('dashboard_model');
+         $this->load->model('Dashboard_model');
 
-      $data['counts'] = $this->dashboard_model->counts();
+      $data['counts'] = $this->Dashboard_model->counts();
        
 		$this->load->view('incld/verify');
 		$this->load->view('incld/header');
@@ -36,7 +36,7 @@ class Admin extends CI_Controller {
         $data['user_count'] = $this->User_model->get_user_count();
          //$this->load->model('dashboard_model');
 
-      $data['counts'] = $this->dashboard_model->counts();
+      $data['counts'] = $this->Dashboard_model->counts();
         $this->load->view('incld/verify');
         $this->load->view('incld/header');
         $this->load->view('incld/top_menu');
