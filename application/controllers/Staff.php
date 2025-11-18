@@ -38,7 +38,7 @@ class Staff extends CI_Controller {
         ];
 
         $this->load->view('incld/header');
-        $this->load->view('staff/staff_form', $data);
+        $this->load->view('Staff/staff_form', $data);
         $this->load->view('incld/footer');
     }
     public function edit($staff_id) {
