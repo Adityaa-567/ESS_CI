@@ -7,7 +7,7 @@ class User extends CI_Controller
         parent::__construct();
         $this->load->model('User_model');
         $this->load->model(model:'Dashboard_model');
-        //
+
     }
 
     public function index() {
@@ -71,11 +71,12 @@ class User extends CI_Controller
 	}
     public function add(){
 		$data['action'] = 'Add' or 'Edit';
+         $data['counts'] = $this->Dashboard_model->counts();    
         $this->load->view('incld/verify');
 		$this->load->view('incld/header');
 		$this->load->view('incld/top_menu');
 		$this->load->view('incld/side_menu');
-		$this->load->view('user/dashboard');    //change here admin to user
+		$this->load->view('user/dashboard',$data);    //change here admin to user
 		$this->load->view('user/form' ,$data);
 		$this->load->view('incld/jslib');
 		$this->load->view('incld/footer');
