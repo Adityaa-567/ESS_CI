@@ -19,15 +19,15 @@
             <thead>
                 <tr>
                     <!-- <th style="width:2.3vw">SrNO</th> -->
-                    <th style="width:2vw">Staff ID</th>
-                    <th style="width:6vw">Emp Name</th>
-                    <th style="width:3vw">NFC Card No</th>
-                    <th style="width:3vw">Job Role</th>
-                    <th style="width:2vw">Join Date</th>
-                    <th style="width:3vw">Phone NO</th>
-                    <th style="width:3vw">Birth Date</th>
-                    <th style="width:2vw;">Status</th>
-                    <th colspan="3" class="text-center" style="width: 3vw;">Action</th>
+                    <th style="width:1vw">Staff ID</th>
+                    <th style="width:4vw">Emp Name</th>
+                    <th style="width:2vw">NFC Card No</th>
+                    <th style="width:5vw">Job Role</th>
+                    <th style="width:1vw">Join Date</th>
+                    <th style="width:2vw">Phone NO</th>
+                    <th style="width:2vw">Birth Date</th>
+                    <th style="width:1vw;">Status</th>
+                    <th colspan="3" class="text-center" style="width: 1vw;">Action</th>
                 </tr>
             </thead>
 
