@@ -1,7 +1,7 @@
 <div class="card">
     
     <div class="card-header d-flex justify-content-between align-items-center">
-    <h3 class="mb-0">Users Details</h3>
+    <h4 class="mb-0">Users Details</h4>
     <a style="margin-left: 78%;" href="<?=base_url('User/add'); ?>"> <button class="btn btn-primary float-right"> Add Users</button></a>
 
 </div>
@@ -27,9 +27,7 @@
                     <th>Role</th>
                     <th>Type</th>
                     <th>Status</th>
-                    <th>View</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                     <th colspan="3" class="text-center" style="width: 6vw;">Action</th>
                 </tr>
                 <?php if($users){
                      foreach($users as $count => $user){?>

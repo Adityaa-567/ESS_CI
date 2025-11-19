@@ -1,6 +1,6 @@
 <div class="card">
      <div class="card-header d-flex justify-content-between align-items-center">
-        <h3 class="mb-0">Role Details</h3>
+        <h4 class="mb-0">Role Details</h4>
         <a style="margin-left: 80%;" href="<?= base_url('Role/add'); ?>" class="btn btn-primary">Add Role</a>
     </div>
     <div class="card-body">
