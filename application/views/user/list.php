@@ -28,7 +28,8 @@
                     <th>Type</th>
                     <th>Status</th>
                     <th colspan="3" class="text-center" style="width: 6vw;">Action</th>
-                </tr> </thead>
+               </tr>
+                </thead>
                 <tbody>
                 <?php if($users){
                      foreach($users as $count => $user){?>
@@ -48,7 +49,7 @@
                      }
                     }
                  ?>
-            </tbody> 
+            </tbody>
         </table>
     </div>
 </div>
