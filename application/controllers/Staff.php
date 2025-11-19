@@ -43,21 +43,22 @@ class Staff extends CI_Controller {
         $this->load->view('Staff/staff_form', $data);
         $this->load->view('incld/footer');
     }
-    public function edit($staff_id) {
-         $data = new stdClass();
+   
+public function edit($staff_id) {
+
+    $data = new stdClass();
     $data->action = 'edit';
     $data->staff  = $this->Staff_model->get_user($staff_id);
-    if (!empty($data->staff->join_dt)) {
-        $data->staff->join_dt = date('Y-m-d', strtotime($data->staff->join_dt));
+    if (!$data->staff) {
+        show_404();
     }
-
-    if (!empty($data->staff->birth_dt)) {
-        $data->staff->birth_dt = date('Y-m-d', strtotime($data->staff->birth_dt));
-        $this->load->view('incld/header');
-        $this->load->view('staff/staff_form', $data);
-        $this->load->view('incld/footer');
-    }
+    $data->staff->join_dt  = !empty($data->staff->join_dt) ? date('Y-m-d', strtotime($data->staff->join_dt)) : '';
+    $data->staff->birth_dt = !empty($data->staff->birth_dt) ? date('Y-m-d', strtotime($data->staff->birth_dt)) : '';
+    $this->load->view('incld/header');
+    $this->load->view('Staff/staff_form', $data);  
+    $this->load->view('incld/footer');
 }
+
     public function view($staff_id) {
         $data = new stdClass();
         $data->action = 'view';

@@ -17,7 +17,7 @@
         <table id="dtbl" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Sr No</th>
+                    <!-- <th>Sr No</th> -->
                     <th>Role ID</th>
                     <th>User Role</th>
                     <th>Status</th>
@@ -30,7 +30,7 @@
                 <?php if (!empty($roles)): ?>
                     <?php foreach ($roles as $i => $role): ?>
                         <tr>
-                            <td><?= $i + 1 ?></td>
+                            <!-- <td><?= $i + 1 ?></td> -->
                             <td><?= $role->role_id ?></td>
                             <td><?= $role->usr_role ?></td>
                             <td><?= $role->role_st ?></td>
