@@ -104,7 +104,7 @@
                                     </td>
                                     <td>
                                         <label class="form-label">Is Admin?</label>
-                                        <input type="checkbox" name="user_ad" value="1"
+                                        <input type="checkbox" class="form-control" name="user_ad" value="1"
                                             <?= (isset($user->user_ad) && $user->user_ad == "1") ? 'checked' : '' ?> class="form-control">   
                                             <!-- add form class for checkbox -->
                                         <small class="text-danger"><?= form_error('user_ad'); ?></small>
