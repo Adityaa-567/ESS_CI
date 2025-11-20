@@ -20,13 +20,14 @@
         <table id="dtbl" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>UserID</th>
-                    <th>Name</th>
-                    <th style="width:10vw;">Email</th>
-                    <th style="width:10vw;">Phone</th>
-                    <th>Role</th>
-                    <th>Type</th>
-                    <th>Status</th>
+                    <th style="width:2vw;">UserID</th>
+                    <th style="width:10vw;">Name</th>
+                    <th style="width:12vw;">Email</th>
+                    <th style="width:5vw;">Phone</th>
+                    <th style="width:3vw;">Role</th>
+                    <th style="width:2vw;">Type</th>
+                    <th style="width:2vw;">Status</th>
+                      
                     <th colspan="3" class="text-center" style="width: 6vw;">Action</th>
                </tr>
                 </thead>
@@ -40,7 +41,23 @@
                         <td><?php echo $user->user_ph; ?></td>
                         <td><?php echo $user->role_id; ?></td>
                         <td><?php echo $user->user_ty; ?></td>
-                        <td><?php echo $user->user_st; ?></td>
+                        <!-- <td><?php echo $user->user_st; ?></td> -->
+                         <!-- Status with Checkbox -->
+       <td class="text-center">
+    <input type="checkbox"
+        style="
+            width:18px;
+            height:10px;
+            margin-top:10px;
+            transform: scale(1.4);
+            
+            cursor:not-allowed;
+        "
+        <?= ($user->user_st == 'Active') ? 'checked' : '' ?>
+        >
+</td>
+
+        </td>
                         <td class="text-center"><a href="<?=base_url('user/view').'/'.$user->user_id?>"><i class="fa fa-eye"></i></a></td>
                         <td class="text-center"><a href="<?=base_url('user/edit').'/'.$user->user_id?>"><i class="fa fa-edit"></i></a></td>
                         <td class="text-center"><a href="<?= base_url('user/delete_user/'.$user->user_id) ?>"onclick="return confirm('Delete this user?');"><i class="fa fa-trash text-danger"></i></a> </td>                 
