@@ -1,70 +1,93 @@
 <div class="card">
-    
     <div class="card-header d-flex justify-content-between align-items-center">
-    <h4 class="mb-0">Users Details</h4>
-    <a style="margin-left: 78%;" href="<?=base_url('User/add'); ?>"> <button class="btn btn-primary float-right"> Add Users</button></a>
+        <h4 class="mb-0">Users Details</h4>
+        <a  style="margin-left: 80%;" href="<?= base_url('User/add'); ?>" class="btn btn-primary">Add Users</a>
+    </div>
 
-</div>
-    <!-- /.card-header------------------------------------------------------------------------------------------------- -->
     <div class="card-body">
-        <!-- <?php include('assets/incld/messages.php') ?> -->
-         <?php if ($this->session->flashdata('success')): ?>
-    <div class="alert alert-success">
-        <?= $this->session->flashdata('success'); ?>
-    </div>
-<?php elseif ($this->session->flashdata('error')): ?>
-    <div class="alert alert-danger">
-        <?= $this->session->flashdata('error'); ?>
-    </div>
-<?php endif; ?>
-        <table id="dtbl" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th style="width:2vw;">UserID</th>
-                    <th style="width:10vw;">Name</th>
-                    <th style="width:12vw;">Email</th>
-                    <th style="width:5vw;">Phone</th>
-                    <th style="width:3vw;">Role</th>
-                    <th style="width:2vw;">Type</th>
-                    <th style="width:2vw;">Status</th>
-                      
-                    <th colspan="3" class="text-center" style="width: 6vw;">Action</th>
-               </tr>
+
+        <!-- Flash Messages -->
+        <?php if ($this->session->flashdata('success')): ?>
+            <div class="alert alert-success"><?= $this->session->flashdata('success'); ?></div>
+        <?php elseif ($this->session->flashdata('error')): ?>
+            <div class="alert alert-danger"><?= $this->session->flashdata('error'); ?></div>
+        <?php endif; ?>
+
+        <div class="table-responsive">
+            <table id="dtbl" class="table table-bordered table-striped">
+
+                <thead class="btn-primary">
+                    <tr>
+                        <th style="width: 4vw;">UserID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th style="width: 5vw;" colspan="3" class="text-center">Action</th>
+                    </tr>
                 </thead>
+
                 <tbody>
-                <?php if($users){
-                     foreach($users as $count => $user){?>
-                      <tr>
-                        <td><?php echo ++$count; ?></td>
-                        <td><?php echo $user->user_nm; ?></td>
-                        <td><?php echo $user->mail_id; ?></td>
-                        <td><?php echo $user->user_ph; ?></td>
-                        <td><?php echo $user->role_id; ?></td>
-                        <td><?php echo $user->user_ty; ?></td>
-                        <!-- <td><?php echo $user->user_st; ?></td> -->
-                         <!-- Status with Checkbox -->
-                       <td class="text-center">
-                        <input type="checkbox"
-                        style="
-                            width:18px;
-                            height:10px;
-                            margin-top:10px;
-                            transform: scale(1.4);
-                            cursor:not-allowed;
-                            "
-                         <?= ($user->user_st == 'Active') ? 'checked' : '' ?>>
-                        </td>
-  
-                       <!-- </td> -->
-                        <td class="text-center"><a href="<?=base_url('user/view').'/'.$user->user_id?>"><i class="fa fa-eye"></i></a></td>
-                        <td class="text-center"><a href="<?=base_url('user/edit').'/'.$user->user_id?>"><i class="fa fa-edit"></i></a></td>
-                        <td class="text-center"><a href="<?= base_url('user/delete_user/'.$user->user_id) ?>"onclick="return confirm('Delete this user?');"><i class="fa fa-trash text-danger"></i></a> </td>                 
-                        <?php
-                 
-                     }
-                    }
-                 ?>
-            </tbody>
-        </table>
+                    <?php if (!empty($users)) : ?>
+                        <?php foreach ($users as $count => $user): ?>
+                            <tr>
+
+                                <!-- Auto increment count -->
+                                <td><?= ++$count ?></td>
+
+                                <!-- SAFE ACCESS TO FIELDS -->
+                                <td><?= isset($user->user_nm) ? $user->user_nm : '' ?></td>
+                                <td><?= isset($user->mail_id) ? $user->mail_id : '' ?></td>
+                                <td><?= isset($user->user_ph) ? $user->user_ph : '' ?></td>
+                                <td><?= isset($user->role_id) ? $user->role_id : '' ?></td>
+                                <td><?= isset($user->user_ty) ? $user->user_ty : '' ?></td>
+
+                                <!-- Checkbox Status -->
+                                <td class="text-center">
+                                    <input type="checkbox"
+                                        <?= (isset($user->user_st) && $user->user_st == 'Active') ? 'checked' : '' ?>
+                                        style="
+                                            width:18px;
+                                            height:10px;
+                                            margin-top:10px;
+                                            transform: scale(1.4);
+                                            cursor: not-allowed;
+                                        ">
+                                </td>
+
+                                <!-- ACTIONS -->
+                                <td class="text-center">
+                                    <a href="<?= base_url('user/view/' . $user->user_id) ?>">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </td>
+
+                                <td class="text-center">
+                                    <a href="<?= base_url('user/edit/' . $user->user_id) ?>">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                </td>
+
+                                <td class="text-center">
+                                    <a href="<?= base_url('user/delete_user/' . $user->user_id) ?>"
+                                       onclick="return confirm('Delete this user?');">
+                                        <i class="fa fa-trash text-danger"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="10" class="text-center text-danger">No Users Found</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+
+            </table>
+        </div>
+
     </div>
 </div>

@@ -14,7 +14,7 @@
             </div>
         <?php endif; ?>
         <table id="dtbl" class="table table-bordered table-striped">
-            <thead>
+            <thead class="btn-primary">
                 <tr>
                     <!-- <th>Sr No</th> -->
                     <th>Role ID</th>

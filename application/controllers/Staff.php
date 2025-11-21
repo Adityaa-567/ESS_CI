@@ -7,9 +7,87 @@ class Staff extends CI_Controller {
         parent::__construct();
         $this->load->model('Staff_model');
         $this->load->model('Dashboard_model');
+        $this->load->model('Work_model');
         
        
     }
+  public function status($staff_id = null)
+{
+    if ($staff_id === null) {
+        show_error("Staff ID missing in URL");
+    }
+
+    $data['staff'] = $this->Staff_model->get_user($staff_id);
+
+    if (!$data['staff']) {
+        show_404();
+    }
+
+    // Auto-fill today’s date
+    $data['today'] = date('Y-m-d');
+
+    $data['works'] = $this->Work_model->get_user($staff_id);
+    $data['counts'] = $this->Dashboard_model->counts();
+
+    $this->load->view('incld/verify');
+    $this->load->view('incld/header');
+    $this->load->view('incld/top_menu');
+    $this->load->view('incld/side_menu');
+    $this->load->view('user/dashboard', $data);
+    $this->load->view('Staff/form', $data);
+    $this->load->view('incld/jslib');
+    $this->load->view('incld/script');
+}
+
+ public function emp_list($staff_id = null)
+{
+    // If URL does NOT have staff_id, take from POST
+    if ($staff_id === null) {
+        $staff_id = $this->input->post('staff_id');
+    }
+
+    // Still empty? = Invalid access
+    if (empty($staff_id)) {
+        show_error("Staff ID missing.");
+    }
+
+    // Load employee info
+    $data['staff'] = $this->Staff_model->get_user($staff_id);
+
+    if (!$data['staff']) {
+        show_error("Employee not found.");
+    }
+
+    // If form was submitted → save data
+    if ($this->input->method() === 'post') {
+
+        $insert = [
+            'staff_id' => $staff_id,
+            'staff_st' => $this->input->post('staff_st'),
+            'date'     => $this->input->post('date'),
+        ];
+
+        $this->Work_model->add_status($insert);
+    }
+
+    // Load ONLY this employee's report
+    $data['works'] = $this->Work_model->get_user($staff_id);
+
+    // Dashboard cards
+    $data['counts'] = $this->Dashboard_model->counts();
+
+    // Load UI
+    $this->load->view('incld/verify');
+    $this->load->view('incld/header');
+    $this->load->view('incld/top_menu');
+    $this->load->view('incld/side_menu');
+    $this->load->view('user/dashboard', $data);
+    $this->load->view('Staff/emp_details', $data);
+    $this->load->view('incld/jslib');
+    $this->load->view('incld/script');
+}
+
+
     public function list() {
         $data['staffs'] = $this->Staff_model->get_user();
         $data['counts'] = $this->Dashboard_model->counts();
